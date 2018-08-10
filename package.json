@@ -1,0 +1,9 @@
+{
+  "name": "nodejs-ms-football",
+  "version": "1.0.0",
+  "description": "Simple football Node.js and Express RESTful API with MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
