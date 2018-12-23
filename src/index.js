@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -37,6 +38,12 @@ app.delete('/api/players/:playerId', (req, res) => {
     res.status(204).send();
 });
 
-app.listen(port, () => {
-    console.log(`Running API REST on http://localhost:${port}`);
+mongoose.connect('mongodb://localhost:27017/football', {useNewUrlParser: true}, (err, res) => {
+
+    if (err) return console.log("Error connecting to DB");
+
+    console.log("DB connection is OK")
+    app.listen(port, () => {
+        console.log(`Running API REST on http://localhost:${port}`);
+    });
 });
