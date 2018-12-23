@@ -9,8 +9,8 @@ const port = process.env.port || 3000;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/hello', (req, res) => {
-    res.send({message: "Hello world!"})
+app.get('/hello/:name', (req, res) => {
+    res.send({message: `Hello ${req.params.name}!`})
 });
 
 app.listen(port, () => {
