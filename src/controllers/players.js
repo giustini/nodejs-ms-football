@@ -34,6 +34,7 @@ function addPlayer(req, res) {
     player.age = req.body.age;
     player.picture = req.body.picture;
     player.role = req.body.role;
+    player.team = req.body.team;
 
     player.save((err, playerStored) => {
 
@@ -73,8 +74,15 @@ function deletePlayer(req, res) {
     });
 }
 
+function deletePlayersByTeamId(teamId) {
+    Player.remove({ team: teamId }, err => {
+        if (err) throw err;
+    });
+}
+
 module.exports = {
     getPlayers,
+    deletePlayersByTeamId,
     getPlayer,
     addPlayer,
     updatePlayer,

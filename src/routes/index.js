@@ -3,12 +3,19 @@
 const express = require('express');
 const router = express.Router();
 
-const playerCtrl = require('../controllers/players')
+const playersCtrl = require('../controllers/players');
+const teamCtrl = require('../controllers/teams');
 
-router.get('/players', playerCtrl.getPlayers);
-router.get('/players/:playerId', playerCtrl.getPlayer);
-router.post('/players', playerCtrl.addPlayer);
-router.put('/players/:playerId', playerCtrl.updatePlayer);
-router.delete('/players/:playerId', playerCtrl.deletePlayer);
+router.get('/players', playersCtrl.getPlayers);
+router.get('/players/:playerId', playersCtrl.getPlayer);
+router.post('/players', playersCtrl.addPlayer);
+router.put('/players/:playerId', playersCtrl.updatePlayer);
+router.delete('/players/:playerId', playersCtrl.deletePlayer);
+
+router.get('/teams', teamCtrl.getTeams);
+router.get('/teams/:teamId', teamCtrl.getTeam);
+router.post('/teams', teamCtrl.addTeam);
+router.put('/teams/:teamId', teamCtrl.updateTeam);
+router.delete('/teams/:teamId', teamCtrl.deleteTeam);
 
 module.exports = router;
