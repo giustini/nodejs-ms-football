@@ -12,21 +12,17 @@ const auth = require('../middlewares/auth');
 
 router.get('/players', playersCtrl.getPlayers);
 router.get('/players/:playerId', playersCtrl.getPlayer);
-router.post('/players', playersCtrl.addPlayer);
-router.put('/players/:playerId', playersCtrl.updatePlayer);
-router.delete('/players/:playerId', playersCtrl.deletePlayer);
+router.post('/players', auth, playersCtrl.addPlayer);
+router.put('/players/:playerId', auth, playersCtrl.updatePlayer);
+router.delete('/players/:playerId', auth, playersCtrl.deletePlayer);
 
 router.get('/teams', teamCtrl.getTeams);
 router.get('/teams/:teamId', teamCtrl.getTeam);
-router.post('/teams', teamCtrl.addTeam);
-router.put('/teams/:teamId', teamCtrl.updateTeam);
-router.delete('/teams/:teamId', teamCtrl.deleteTeam);
+router.post('/teams', auth, teamCtrl.addTeam);
+router.put('/teams/:teamId', auth, teamCtrl.updateTeam);
+router.delete('/teams/:teamId', auth, teamCtrl.deleteTeam);
 
 router.post('/signup', userCtrl.signUp);
 router.post('/signin', userCtrl.signIn);
-
-router.get('/private', auth, (req, res) => {
-    res.status(200).send({ message: 'Authorized' })
-});
 
 module.exports = router;
